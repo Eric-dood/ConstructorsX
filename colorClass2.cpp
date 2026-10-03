@@ -41,18 +41,18 @@ int main()
     //First, do a empty constructor
     col.push_back(Color());
     //Then do the partial constructors
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++) //First partial constructor, with one parameter
     {
         Color temp = Color(int(rand() % 255));
         col.push_back(temp);
     }
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 10; i++) //Second partial constructor, with two parameters
     {
         Color temp = Color(int(rand() % 255), int(rand() % 255));
         col.push_back(temp);
     }
-    //Finally do the full constructors
-    for (int i = 0; i < 15; i++)
+    //Finally do the full constructors, with all three parameters
+    for (int i = 0; i < 10; i++)
     {
         Color temp = Color(int(rand() % 255), int(rand() % 255), int(rand() % 255));
         col.push_back(temp);
