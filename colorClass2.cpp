@@ -14,6 +14,11 @@ class Color
         int red, green, blue;
     //The public functions consist of getter, setter, and print functions
     public:
+        //constructors
+        Color() { red = 0; green = 0; blue = 0; }
+        Color(int r) { red = r; green = 0; blue = 0; }
+        Color(int r, int g) { red = r; green = g; blue = 0; }
+        Color(int r, int g, int b) { red = r; green = g; blue = b; }
         //getter functions; these return the color values
         int getRed() { return red; }
         int getGreen() { return green; }
