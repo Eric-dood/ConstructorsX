@@ -1,10 +1,8 @@
 //COMSC-210 | Lab 16 | Eric-Giulio Hedes
 #include <iomanip>
 #include <iostream>
+#include <vector>
 using namespace std;
-
-//Get the global size integer
-const int SIZE = 25;
 
 //Set up the Color class
 class Color
@@ -15,10 +13,10 @@ class Color
     //The public functions consist of getter, setter, and print functions
     public:
         //constructors
-        Color() { red = 0; green = 0; blue = 0; }
-        Color(int r) { red = r; green = 0; blue = 0; }
-        Color(int r, int g) { red = r; green = g; blue = 0; }
-        Color(int r, int g, int b) { red = r; green = g; blue = b; }
+        Color() { red = 0; green = 0; blue = 0; } //empty constructor
+        Color(int r) { red = r; green = 0; blue = 0; } //partial constructor #1
+        Color(int r, int g) { red = r; green = g; blue = 0; } //partial constructor #2
+        Color(int r, int g, int b) { red = r; green = g; blue = b; } //full constructor
         //getter functions; these return the color values
         int getRed() { return red; }
         int getGreen() { return green; }
@@ -37,18 +35,31 @@ int main()
     //Generate a random seed number
     srand(time(0));
     //Set up the color array
-    Color col[SIZE];
+    vector<Color> col;
 
     //Use a ranged loop to initialize all of the color elements from the array
-    for (int i = 0; i < SIZE; i++)
+    //First, do a empty constructor
+    col.push_back(Color());
+    //Then do the partial constructors
+    for (int i = 0; i < 10; i++)
     {
-        col[i].setRed(int(rand() % 255)); //Red
-        col[i].setGreen(int(rand() % 255)); //Green
-        col[i].setBlue(int(rand() % 255)); //Blue
+        Color temp = Color(int(rand() % 255));
+        col.push_back(temp);
+    }
+    for (int i = 0; i < 10; i++)
+    {
+        Color temp = Color(int(rand() % 255), int(rand() % 255));
+        col.push_back(temp);
+    }
+    //Finally do the full constructors
+    for (int i = 0; i < 15; i++)
+    {
+        Color temp = Color(int(rand() % 255), int(rand() % 255), int(rand() % 255));
+        col.push_back(temp);
     }
 
     //Use another ranged loop to print the colors out
-    for (int j = 0; j < SIZE; j++)
+    for (int j = 0; j < col.size(); j++)
         col[j].print();
 }
 //End of main()
